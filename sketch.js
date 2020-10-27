@@ -3,7 +3,8 @@ const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Constraint = Matter.Constraint;
 
-var world, engine, body
+var world, engine, body;
+var polygon, slingshot;
 
 function preload() {
   
@@ -38,9 +39,9 @@ function setup() {
   block11 = new Box(1050, 315, 30, 40, "pink");
   block12 = new Box(1070, 315, 30, 40, "orange");
 
-  polygon = new Ball(500, 300, 20);
+  polygon = new Ball(400, 350, 20);
 
-
+  slingshot = new SlingShot(polygon.body,{x:400, y:250});
   
 
 
@@ -71,5 +72,16 @@ function draw() {
   block12.display();
 
   polygon.display();
+
+  slingshot.display();
   
+}
+
+function mouseDragged(){
+  Matter.Body.setPosition(polygon.body, {x: mouseX , y: mouseY});
+}
+
+
+function mouseReleased(){
+  slingshot.fly();
 }

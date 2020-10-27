@@ -2,9 +2,9 @@ class Ball {
     constructor(x, y, radius) {
       var options = {
           isStatic : false,
-          'restitution':0.3,
-          'friction':0.5,
-          'density':1.2,
+          'restitution':0.8,
+          'friction':1,
+          'density':1
           
         }
         
@@ -16,10 +16,12 @@ class Ball {
       var pos = this.body.position
       var angle = this.body.angle;
       push();
-      rotate(angle);
+
       translate(pos.x, pos.y);
-      imageMode(RADIUS);
-      fill(10);
+      rotate(angle);
+      fill("green");
+      ellipseMode(RADIUS);
+      ellipse(0 , 0, this.radius, this.radius);
       pop();
     }
   }
